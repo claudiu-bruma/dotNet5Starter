@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Companies Page";
+}
+@model IEnumerable<CompanyViewModel>
+
+<div class="text-center">
+    <h1 class="display-4">Just a list of companies </h1>
+    <div class="companyGrid">
+        <div class="flex-xl-row row company-header">
+            <div class="col-sm-2 company-data-cell">Id</div>
+            <div class="col-sm-2 company-data-cell">Name</div>
+            <div class="col-sm-2 company-data-cell">Isin</div>
+            <div class="col-sm-2 company-data-cell">Exchange</div>
+            <div class="col-sm-2 company-data-cell">StockTicker</div>
+            <div class="col-sm-2 company-data-cell">Website</div>
+        </div>
+        @foreach (var company in Model)
+        {
+            <div class="flex-xl-row row company-data-row">
+                <div class="col-sm-2 company-data-cell secondary-color-light">@company.Id</div>
+                <div class="col-sm-2 company-data-cell secondary-color-light">@company.Name</div>
+                <div class="col-sm-2 company-data-cell secondary-color-light">@company.Isin</div>
+                <div class="col-sm-2 company-data-cell secondary-color-light">@company.Exchange</div>
+                <div class="col-sm-2 company-data-cell secondary-color-light">@company.StockTicker</div>
+                <div class="col-sm-2 company-data-cell secondary-color-light">@company.Website</div>
+            </div>
+        }
+    </div>
+    <div class="flex-xl-row row ">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCompany">
+            Add new company
+        </button>
+    </div>
+
+    <form asp-controller="Companies" asp-action="CreateNewCompany" method="post">
+        <!-- Modal -->
+        <div class="modal fade" id="addCompany" tabindex="-1" role="dialog" aria-labelledby="addCompanyLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addCompanyLabel">Add Company</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group flex-xl-row row">
+                            <label for="Name">Company name</label>
+                            <input type="text" class="form-control" id="Name" aria-describedby="nameHelp" name="Name" placeholder="Enter new company name">
+                            <small id="nameHelp" class="form-text text-muted">Name of the new company </small>
+                        </div>
+                        <div class="form-group flex-xl-row row">
+                            <label for="Exchange">Company Exchange Name</label>
+                            <input type="text" class="form-control" id="Exchange" aria-describedby="exchangeHelp" name="Exchange" placeholder="Enter new company exchange name">
+                            <small id="exchangeHelp" class="form-text text-muted">Exchange of the new company </small>
+                        </div>
+                        <div class="form-group flex-xl-row row">
+                            <label for="StockTicker">Company Stock Ticker</label>
+                            <input type="text" class="form-control" id="StockTicker" aria-describedby="StockTickerHelp" name="StockTicker" placeholder="Enter new company StockTicker">
+                            <small id="StockTickerHelp" class="form-text text-muted">Stock Ticker of the new company </small>
+                        </div>
+                        <div class="form-group flex-xl-row row">
+                            <label for="Isin">Company Isin</label>
+                            <input type="text" class="form-control" id="Isin" aria-describedby="IsinHelp" name="Isin" placeholder="Enter new company Isin">
+                            <small id="IsinHelp" class="form-text text-muted">Isin of the new company </small>
+                        </div>
+                        <div class="form-group flex-xl-row row">
+                            <label for="Website">Company Website</label>
+                            <input type="text" class="form-control" id="Website" aria-describedby="WebsiteHelp" name="Website" placeholder="Enter new company Website">
+                            <small id="WebsiteHelp" class="form-text text-muted">Website </small>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
