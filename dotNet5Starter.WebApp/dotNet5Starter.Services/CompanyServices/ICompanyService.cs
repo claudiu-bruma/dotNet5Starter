@@ -5,7 +5,7 @@ namespace dotNet5Starter.Services.CompanyServices
 {
     public interface ICompanyService
     {
-        int Add(CompanyDto newCompany);
+        Task<int> Add(CompanyDto newCompany);
         CompanyDto GetCompanyById(int id);
         CompanyDto GetCompanyByIsin(string Isin);
         IEnumerable<CompanyDto> GetCompanies();

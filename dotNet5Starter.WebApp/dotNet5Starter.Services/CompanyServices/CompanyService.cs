@@ -19,15 +19,15 @@ namespace dotNet5Starter.Services.CompanyServices
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public int Add(CompanyDto newCompany)
+        public async Task<int> Add(CompanyDto newCompany)
         {
             if (_companyRepo.Query().Any(x => x.ISIN == newCompany.Isin))
             {
                 throw new ArgumentException("Company Isin already exist");
             }
             var companyEntity = _mapper.Map<Company>(newCompany);
-            _companyRepo.Add(companyEntity);
-            _unitOfWork.Commit();
+            await _companyRepo.Add(companyEntity);
+            await _unitOfWork.Commit();
             return companyEntity.Id;
         }
 

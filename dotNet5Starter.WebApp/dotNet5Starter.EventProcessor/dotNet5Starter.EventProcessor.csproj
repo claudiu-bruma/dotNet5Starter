@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>dotnet-dotNet5Starter.EventProcessor-1F31B0DD-BBF3-408E-81B4-316F2624F197</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\dotNet5Starter.Services\dotNet5Starter.Services.csproj" />
+    <ProjectReference Include="..\dotNetStarter.Infrastructure\dotNet5Starter.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>
