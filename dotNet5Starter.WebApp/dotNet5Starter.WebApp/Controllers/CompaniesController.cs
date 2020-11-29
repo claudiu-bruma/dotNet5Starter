@@ -26,7 +26,7 @@ namespace dotNet5Starter.Webapp.Controllers
             _mapper = mapper;
             _eventBus = eventBus;
         }
-        public IActionResult Index(CancellationToken cancelationToken)
+        public IActionResult Index()
         {
             var companyList = _companyService.GetCompanies();
             var model = _mapper.Map<IEnumerable<CompanyViewModel>>(companyList);
@@ -39,7 +39,7 @@ namespace dotNet5Starter.Webapp.Controllers
                 Message = JsonSerializer.Serialize(model)
             }, "company", cancelationToken);
 
-            return Index(cancelationToken);
+            return Index();
         }
     }
 }

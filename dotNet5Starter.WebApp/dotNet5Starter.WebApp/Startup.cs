@@ -36,16 +36,6 @@ namespace dotNet5Starter.Webapp
             services.AddScoped(typeof(IEventBus), typeof(RabbitMqEventBus));
         }
 
-        private RawRabbitConfiguration GetRawRabbitConfiguration()
-        {
-            var section = Configuration.GetSection("RawRabbit");
-            if (!section.GetChildren().Any())
-            {
-                throw new ArgumentException($"Unable to configuration section 'RawRabbit'. Make sure it exists in the provided configuration");
-            }
-            return section.Get<RawRabbitConfiguration>();
-        }
-
         public IConfiguration Configuration { get; }
         private static void RegisterServices(IServiceCollection services)
         {
@@ -71,7 +61,7 @@ namespace dotNet5Starter.Webapp
             });
 
             IMapper mapper = mappingConfig.CreateMapper();
-            services.AddSingleton(mapper); 
+            services.AddSingleton(mapper);
 
             ConfigureRabbitMq(services);
             ConfigureInjectionForServices(services);
@@ -86,9 +76,6 @@ namespace dotNet5Starter.Webapp
         {
             var rabbitMqSection = Configuration.GetSection("RabbitMq");
             var exchangeSection = Configuration.GetSection("RabbitMqExchange");
-
-            services.AddRabbitMqClient(rabbitMqSection)
-                .AddProductionExchange("dotNet5Starter_event_bus", exchangeSection);
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
