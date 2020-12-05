@@ -13,6 +13,5 @@
         public string ISIN { get; set; }
 
         public string Website { get; set; }
-
     }
 }

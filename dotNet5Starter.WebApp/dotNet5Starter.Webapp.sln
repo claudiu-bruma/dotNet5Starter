@@ -11,13 +11,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotNet5Starter.Services", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotNet5Starter.EventProcessor", "dotNet5Starter.EventProcessor\dotNet5Starter.EventProcessor.csproj", "{0E2887D7-0683-41B4-9896-642F590245CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotNet5Starter.ReactWebApp", "dotNet5Starter.ReactWebApp\dotNet5Starter.ReactWebApp.csproj", "{61E95B35-B4A8-4838-BABD-5C0ABFBBF076}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotNet5Starter.ReactWebApp", "dotNet5Starter.ReactWebApp\dotNet5Starter.ReactWebApp.csproj", "{61E95B35-B4A8-4838-BABD-5C0ABFBBF076}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{1C28C328-3D6A-4020-9E10-031FD65B3A2B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{06A43570-685B-49C4-9DA5-EABEFF202C2F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workers", "Workers", "{76AB30EE-BD72-4915-B2AD-D249DE05B2E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotNet5Starter.VueJsWebApp", "dotNet5Starter.VueJsWebApp\dotNet5Starter.VueJsWebApp.csproj", "{EB805CC3-54F6-40E9-839B-C1F9FE43E36E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{61E95B35-B4A8-4838-BABD-5C0ABFBBF076}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61E95B35-B4A8-4838-BABD-5C0ABFBBF076}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61E95B35-B4A8-4838-BABD-5C0ABFBBF076}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB805CC3-54F6-40E9-839B-C1F9FE43E36E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB805CC3-54F6-40E9-839B-C1F9FE43E36E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB805CC3-54F6-40E9-839B-C1F9FE43E36E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB805CC3-54F6-40E9-839B-C1F9FE43E36E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{1A7370A2-5135-4FE2-A9B6-72984BC3124E} = {1C28C328-3D6A-4020-9E10-031FD65B3A2B}
 		{0E2887D7-0683-41B4-9896-642F590245CD} = {76AB30EE-BD72-4915-B2AD-D249DE05B2E9}
 		{61E95B35-B4A8-4838-BABD-5C0ABFBBF076} = {06A43570-685B-49C4-9DA5-EABEFF202C2F}
+		{EB805CC3-54F6-40E9-839B-C1F9FE43E36E} = {06A43570-685B-49C4-9DA5-EABEFF202C2F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FF147E05-7024-4443-B862-547E9F98E557}

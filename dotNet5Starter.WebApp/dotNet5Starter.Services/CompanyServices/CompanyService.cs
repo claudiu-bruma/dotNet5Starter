@@ -10,9 +10,9 @@ namespace dotNet5Starter.Services.CompanyServices
 {
     public class CompanyService : ICompanyService
     {
-        private IRepository<Company> _companyRepo { get; set; }
-        private IUnitOfWork _unitOfWork { get; set; }
-        public IMapper _mapper { get; set; }
+        private IRepository<Company> _companyRepo { get; init; }
+        private IUnitOfWork _unitOfWork { get; init; }
+        public IMapper _mapper { get; init; }
         public CompanyService(IRepository<Company> companyRepo, IUnitOfWork unitOfWork, IMapper mapper)
         {
             _companyRepo = companyRepo;

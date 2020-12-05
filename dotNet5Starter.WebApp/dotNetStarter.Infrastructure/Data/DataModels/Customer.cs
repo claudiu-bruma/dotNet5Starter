@@ -13,5 +13,11 @@
         public string Email { get; set; }
         public bool SubscribedToNewsletter { get; set; }
         public string ClientUniqueRefernce { get; set; }
+
+
+        
     }
+
+
+
 }
