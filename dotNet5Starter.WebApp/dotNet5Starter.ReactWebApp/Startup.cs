@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using dotNet5Starter.Services;
 
 namespace dotNet5Starter.ReactWebApp
 {
@@ -27,10 +28,7 @@ namespace dotNet5Starter.ReactWebApp
         }
 
         public IConfiguration Configuration { get; }
-        private static void RegisterServices(IServiceCollection services)
-        {
-            services.AddScoped(typeof(ICompanyService), typeof(CompanyService));
-        }
+ 
 
         private void RegisterDAL(IServiceCollection services)
         {
@@ -44,7 +42,7 @@ namespace dotNet5Starter.ReactWebApp
         {
             RegisterEventBus(services);
             RegisterDAL(services);
-            RegisterServices(services);
+            ServicesDependencyInjectionSetup.RegisterServices(services);
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.

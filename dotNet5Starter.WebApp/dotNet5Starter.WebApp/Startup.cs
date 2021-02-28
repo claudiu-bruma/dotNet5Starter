@@ -15,6 +15,7 @@ using System;
 using System.Linq;
 using RabbitMQ.Client.Core.DependencyInjection;
 using dotNet5Starter.Infrastructure.EventBus.Configuration;
+using dotNet5Starter.Services;
 
 namespace dotNet5Starter.Webapp
 {
@@ -28,7 +29,7 @@ namespace dotNet5Starter.Webapp
         {
             RegisterEventBus(services);
             RegisterDAL(services);
-            RegisterServices(services);
+            ServicesDependencyInjectionSetup.RegisterServices(services);
         }
 
         private void RegisterEventBus(IServiceCollection services)
@@ -37,11 +38,7 @@ namespace dotNet5Starter.Webapp
         }
 
         public IConfiguration Configuration { get; }
-        private static void RegisterServices(IServiceCollection services)
-        {
-            services.AddScoped(typeof(ICompanyService), typeof(CompanyService));
-        }
-
+   
         private void RegisterDAL(IServiceCollection services)
         {
             services.AddDbContext<Dotnet5StarterDbContext>(options => options

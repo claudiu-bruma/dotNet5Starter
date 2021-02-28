@@ -1,6 +1,14 @@
+using AutoMapper;
+using dotNet5Starter.Infrastructure.Data.DataAccessAbtractions;
+using dotNet5Starter.Infrastructure.EventBus.Abstractions;
+using dotNet5Starter.Infrastructure.EventBus.Configuration;
+using dotNet5Starter.Services;
+using dotNet5Starter.VueJsWebApp.AutoMapper;
 using dotNet5Starter.VueJsWebApp.Helpers;
+using dotNet5Starter.Webapp.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -14,11 +22,53 @@ namespace dotNet5Starter.VueJsWebApp
             Configuration = configuration;
         }
 
+        public void ConfigureInjectionForServices(IServiceCollection services)
+        {
+            RegisterEventBus(services);
+            RegisterDAL(services);
+            ServicesDependencyInjectionSetup.RegisterServices(services);
+        }
+
+        private void RegisterEventBus(IServiceCollection services)
+        {
+            services.AddScoped(typeof(IEventBus), typeof(RabbitMqEventBus));
+        }
+
         public IConfiguration Configuration { get; }
 
+        private void RegisterDAL(IServiceCollection services)
+        {
+            services.AddDbContext<Dotnet5StarterDbContext>(options => options
+                .UseSqlServer(Configuration.GetConnectionString(nameof(Dotnet5StarterDbContext)))
+            );
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+        }
+
+        public void ConfigureRabbitMq(IServiceCollection services)
+        {
+            var rabbitMqSection = Configuration.GetSection("RabbitMq");
+            var exchangeSection = Configuration.GetSection("RabbitMqExchange");
+        }
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Auto Mapper Configurations
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            ConfigureRabbitMq(services);
+            ConfigureInjectionForServices(services);
+
+            var config = new RabbitMqSettings();
+            Configuration.Bind("RabbitMqSettings", config);
+            services.AddSingleton(config);
+
 
             services.AddControllersWithViews();
 

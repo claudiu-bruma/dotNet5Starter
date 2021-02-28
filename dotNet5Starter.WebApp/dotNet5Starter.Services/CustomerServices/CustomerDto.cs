@@ -1,6 +1,12 @@
-﻿namespace dotNet5Starter.Webapp.Infrastructure.DataModels
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace dotNet5Starter.Services.CustomerServices
 {
-    public class Customer
+    public class CustomerDto
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -12,9 +18,6 @@
         public string ZipCode { get; set; }
         public string Email { get; set; }
         public bool SubscribedToNewsletter { get; set; }
-        public string ClientUniqueRefernce { get; set; }        
+        public string ClientUniqueRefernce { get; set; }
     }
-
-
-
 }
